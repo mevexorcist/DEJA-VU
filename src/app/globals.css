@@ -1,0 +1,382 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* X.com colors + Linear.app style system */
+:root {
+  /* Light theme - X.com exact colors */
+  --background: #ffffff;
+  --foreground: #0f1419;
+  --card: #ffffff;
+  --card-foreground: #0f1419;
+  --primary: #8b5cf6;
+  --primary-hover: #7c3aed;
+  --primary-foreground: #ffffff;
+  --secondary: #eff3f4;
+  --secondary-foreground: #536471;
+  --muted: #f7f9f9;
+  --muted-foreground: #536471;
+  --accent: #eff3f4;
+  --accent-foreground: #0f1419;
+  --border: #eff3f4;
+  --input: #eff3f4;
+  --ring: #8b5cf6;
+  --radius: 16px;
+  
+  /* X.com specific */
+  --sidebar-bg: #ffffff;
+  --hover-bg: rgba(15, 20, 25, 0.1);
+  --success: #00ba7c;
+  --error: #f4212e;
+  --warning: #ffad1f;
+  
+  /* Linear.app shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+}
+
+/* Theme system overrides */
+.light {
+  --background: #ffffff;
+  --foreground: #0f1419;
+  --card: #ffffff;
+  --card-foreground: #0f1419;
+  --primary: #8b5cf6;
+  --primary-hover: #7c3aed;
+  --primary-foreground: #ffffff;
+  --secondary: #eff3f4;
+  --secondary-foreground: #536471;
+  --muted: #f7f9f9;
+  --muted-foreground: #536471;
+  --accent: #eff3f4;
+  --accent-foreground: #0f1419;
+  --border: #eff3f4;
+  --input: #eff3f4;
+  --ring: #8b5cf6;
+  --sidebar-bg: #ffffff;
+  --hover-bg: rgba(15, 20, 25, 0.1);
+}
+
+.dark {
+  /* Dark theme - X.com exact dark colors */
+  --background: #000000;
+  --foreground: #e7e9ea;
+  --card: #16181c;
+  --card-foreground: #e7e9ea;
+  --primary: #a78bfa;
+  --primary-hover: #8b5cf6;
+  --primary-foreground: #ffffff;
+  --secondary: #16181c;
+  --secondary-foreground: #71767b;
+  --muted: #16181c;
+  --muted-foreground: #71767b;
+  --accent: #16181c;
+  --accent-foreground: #e7e9ea;
+  --border: #2f3336;
+  --input: #202327;
+  --ring: #a78bfa;
+  --sidebar-bg: #000000;
+  --hover-bg: rgba(231, 233, 234, 0.1);
+  --success: #00ba7c;
+  --error: #f4212e;
+  --warning: #ffad1f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #e7e9ea;
+    --card: #16181c;
+    --card-foreground: #e7e9ea;
+    --primary: #a78bfa;
+    --primary-hover: #8b5cf6;
+    --primary-foreground: #ffffff;
+    --secondary: #16181c;
+    --secondary-foreground: #71767b;
+    --muted: #16181c;
+    --muted-foreground: #71767b;
+    --accent: #16181c;
+    --accent-foreground: #e7e9ea;
+    --border: #2f3336;
+    --input: #202327;
+    --ring: #a78bfa;
+    --sidebar-bg: #000000;
+    --hover-bg: rgba(231, 233, 234, 0.1);
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  /* Linear.app uses Inter, X uses system fonts - we combine both */
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  transition: background-color 0.15s ease, color 0.15s ease;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Linear.app style text rendering */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+/* X.com link styling */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* X.com colors + Linear.app style components */
+@layer components {
+  /* Layout - X.com style */
+  .container-responsive {
+    @apply w-full max-w-7xl mx-auto;
+  }
+  
+  .grid-responsive {
+    @apply grid grid-cols-1 lg:grid-cols-12;
+  }
+  
+  .sidebar-responsive {
+    @apply hidden lg:flex lg:col-span-3 xl:col-span-2 justify-end;
+  }
+  
+  .main-responsive {
+    @apply col-span-1 lg:col-span-6 xl:col-span-6 border-x border-border min-h-screen;
+  }
+  
+  .rightpanel-responsive {
+    @apply hidden lg:block lg:col-span-3 xl:col-span-4 pl-6;
+  }
+
+  /* Card - Linear.app clean style */
+  .card {
+    @apply bg-card rounded-2xl border border-border;
+    transition: all 0.15s ease;
+  }
+  
+  .card:hover {
+    background: var(--hover-bg);
+  }
+
+  /* Post card - X.com exact style */
+  .post-card {
+    @apply bg-transparent border-b border-border px-4 py-3 cursor-pointer;
+    transition: background-color 0.15s ease;
+  }
+  
+  .post-card:hover {
+    background: var(--hover-bg);
+  }
+
+  /* Buttons - X.com style with Linear.app smoothness */
+  .btn-primary {
+    @apply bg-primary text-white font-bold px-4 py-2 rounded-full transition-all duration-150;
+  }
+  
+  .btn-primary:hover {
+    @apply bg-violet-600;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border border-border text-foreground font-bold px-4 py-2 rounded-full transition-all duration-150;
+  }
+  
+  .btn-secondary:hover {
+    background: var(--hover-bg);
+  }
+  
+  .btn-ghost {
+    @apply text-foreground font-medium px-3 py-2 rounded-full transition-all duration-150;
+  }
+  
+  .btn-ghost:hover {
+    background: var(--hover-bg);
+  }
+
+  /* Input - X.com search style */
+  .input-field {
+    @apply w-full px-4 py-3 bg-secondary border-none rounded-full text-foreground placeholder-muted-foreground transition-all duration-150;
+  }
+  
+  .input-field:focus {
+    @apply outline-none ring-1 ring-primary bg-transparent;
+  }
+
+  /* Avatar - X.com style */
+  .avatar {
+    @apply rounded-full object-cover flex-shrink-0;
+  }
+  
+  .avatar-sm {
+    @apply w-8 h-8;
+  }
+  
+  .avatar-md {
+    @apply w-10 h-10;
+  }
+  
+  .avatar-lg {
+    @apply w-12 h-12;
+  }
+  
+  .avatar-xl {
+    @apply w-16 h-16;
+  }
+
+  /* Navigation - X.com sidebar style */
+  .nav-item {
+    @apply flex items-center gap-4 px-3 py-3 rounded-full text-xl transition-colors duration-150 cursor-pointer;
+  }
+  
+  .nav-item:hover {
+    background: var(--hover-bg);
+  }
+  
+  .nav-item.active {
+    @apply font-bold;
+  }
+
+  /* Engagement buttons - X.com exact style */
+  .engagement-btn {
+    @apply flex items-center gap-1 text-muted-foreground transition-colors duration-150 cursor-pointer;
+  }
+  
+  .engagement-btn.reply:hover {
+    @apply text-primary;
+  }
+  
+  .engagement-btn.repost:hover {
+    @apply text-green-500;
+  }
+  
+  .engagement-btn.like:hover {
+    @apply text-pink-600;
+  }
+  
+  .engagement-btn.share:hover {
+    @apply text-primary;
+  }
+  
+  .engagement-icon {
+    @apply p-2 rounded-full transition-colors duration-150;
+  }
+  
+  .engagement-btn.reply:hover .engagement-icon {
+    @apply bg-violet-500 bg-opacity-10;
+  }
+  
+  .engagement-btn.repost:hover .engagement-icon {
+    @apply bg-green-500 bg-opacity-10;
+  }
+  
+  .engagement-btn.like:hover .engagement-icon {
+    @apply bg-pink-600 bg-opacity-10;
+  }
+  
+  .engagement-btn.share:hover .engagement-icon {
+    @apply bg-violet-500 bg-opacity-10;
+  }
+
+  /* Verified badge - X.com style */
+  .verified-badge {
+    @apply w-5 h-5 text-primary;
+  }
+
+  /* Trending card - X.com style */
+  .trending-item {
+    @apply px-4 py-3 cursor-pointer transition-colors duration-150;
+  }
+  
+  .trending-item:hover {
+    background: var(--hover-bg);
+  }
+
+  /* Who to follow - X.com style */
+  .follow-suggestion {
+    @apply flex items-center justify-between px-4 py-3 cursor-pointer transition-colors duration-150;
+  }
+  
+  .follow-suggestion:hover {
+    background: var(--hover-bg);
+  }
+
+  /* Status indicators - Linear.app style */
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+  
+  .status-online {
+    @apply bg-green-500;
+  }
+  
+  .status-away {
+    @apply bg-yellow-500;
+  }
+  
+  .status-offline {
+    @apply bg-gray-500;
+  }
+
+  /* Loading skeleton - Linear.app style */
+  .skeleton {
+    @apply animate-pulse bg-secondary rounded;
+  }
+
+  /* Scrollbar - minimal like Linear.app */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-foreground);
+  }
+
+  /* Divider */
+  .divider {
+    @apply h-px bg-border;
+  }
+
+  /* Tab navigation - X.com style */
+  .tab-item {
+    @apply flex-1 py-4 text-center font-medium text-muted-foreground cursor-pointer transition-colors duration-150 relative;
+  }
+  
+  .tab-item:hover {
+    background: var(--hover-bg);
+  }
+  
+  .tab-item.active {
+    @apply text-foreground font-bold;
+  }
+  
+  .tab-item.active::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-14 h-1 bg-primary rounded-full;
+  }
+}
