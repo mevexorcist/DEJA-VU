@@ -29,12 +29,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className = '' }) => {
     <nav className={`w-[275px] h-screen sticky top-0 flex flex-col px-2 py-3 ${className}`}>
       {/* Logo */}
       <a href="/" className="p-3 rounded-full hover:bg-[var(--hover-bg)] transition-colors w-fit mb-1">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="16" cy="16" r="16" fill="#2DD4BF"/>
-          <path d="M8 10 L8 22 Q8 24 10 24 L14 24" stroke="#0f172a" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M6 8 L26 24" stroke="#0f172a" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M18 8 L22 16 L26 8" stroke="#0f172a" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
+        <img src="/logo.png" alt="DEJA-VU" width={32} height={32} className="rounded-full" />
       </a>
 
       {/* Navigation Items */}

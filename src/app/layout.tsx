@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   keywords: ['crypto', 'social media', 'airdrop', 'blockchain', 'defi'],
   authors: [{ name: 'DEJA-VU Team' }],
   icons: {
-    icon: '/favicon.svg',
-    apple: '/favicon.svg',
+    icon: '/favicon.png',
+    apple: '/favicon.png',
   },
 };
 
