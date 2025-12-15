@@ -16,6 +16,10 @@ export const metadata: Metadata = {
     'Social media platform for cryptocurrency community with airdrop farming and exchange integration',
   keywords: ['crypto', 'social media', 'airdrop', 'blockchain', 'defi'],
   authors: [{ name: 'DEJA-VU Team' }],
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 export const viewport: Viewport = {
